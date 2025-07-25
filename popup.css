@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+* {
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    width: 200px;
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.pick-button {
+    width: 90px;
+    padding: 3px;
+    border: none;
+    border-radius: 5px;
+    background-color: #5c7cdc;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.pick-button:hover {
+    background-color: #42599d;
+}
+
+.color-background {
+    border: 1px solid black;
+    height: 100px;
+    width: 100px;
+    margin: 10px 0;
+}

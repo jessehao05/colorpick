@@ -1,0 +1,18 @@
+{
+    "manifest_version": 3,
+    "name": "Color Palette Selector",
+    "version": "1.0",
+    "description": "Select the color of any pixel on the screen for developer use",
+    "action": {
+        "default_popup": "popup.html"
+    },
+    "permissions": [
+        "activeTab"
+    ],
+    "icons": {
+        "16": "/icons/color_palette_2.png",
+        "32": "/icons/color_palette_2.png",
+        "48": "/icons/color_palette_2.png",
+        "128": "/icons/color_palette_2.png"
+    }
+}
