@@ -36,3 +36,24 @@ body {
     width: 100px;
     margin: 10px 0;
 }
+
+.copy-button {
+    font-size: 0.7rem;
+    margin-top: 5px;
+    width: 50px;
+    padding: 1px;
+    border: 1px solid #5c7cdc;
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: #5c7cdc;
+}
+
+.copy-button:hover {
+    background-color: #f3f3f3;
+}
+
+.copied-indicator {
+    color: #04aa6d;
+    margin-top: 5px;
+    font-size: 0.6rem;
+}
