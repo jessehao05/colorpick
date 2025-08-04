@@ -1,12 +1,28 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 * {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Inter', sans-serif;
 }
 
 body {
     width: 200px;
     padding: 20px;
+}
+
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #323232;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 4px;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.toast.show {
+  opacity: 1;
 }
 
 .container {
@@ -64,6 +80,10 @@ body {
     margin: 10px 0;
 }
 
+.color-text {
+    margin-bottom: 30px;
+}
+
 /* .copy-button {
     font-size: 0.7rem;
     margin-top: 5px;
@@ -91,19 +111,96 @@ body {
     background-color: #f3f3f3;
 }
 
+.palette {
+    /* border: 1px solid red; */
+    width: 187px; /* TODO: adjust this later */
+    font-size: 0.7rem;
+    margin-bottom: 15px;
+}
 
-.toast {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #323232;
-  color: #fff;
-  padding: 12px 20px;
-  border-radius: 4px;
-  z-index: 9999;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+.color-container {
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 2px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
 }
-.toast.show {
-  opacity: 1;
+
+.color {
+    /* border: 1px solid black; */
+    height: 40px;
+    width: 40px;
+    border-radius: 2px;
+    background-color: red;
 }
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 2px;
+}
+
+.right {
+    display: flex;
+    gap: 1px;
+}
+
+.pal-img {
+    width: 12px;
+    height: 12px;
+    margin: 0;
+    padding: 0;
+}
+
+.palette-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    border: none;
+    border-radius: 0.2rem;
+}
+
+.plus-btn {
+    background-color: #D2DCF0;
+}
+
+.plus-btn:hover {
+    background-color: #bfc7d8;
+}
+
+.plus-img {
+    color: #4E7DAE;
+}
+
+.edit-btn {
+    background-color: #EFEFEF;
+}
+
+.edit-btn:hover {
+    background-color: #d5d4d4;
+}
+.edit-btn {
+    background-color: #EFEFEF;
+}
+
+.edit-img {
+    color: #AAAAAA;
+}
+
+.trash-btn {
+    background-color: #EBB0B0;
+}
+
+.trash-btn:hover {
+    background-color: #cc9797;
+}
+
+.trash-img {
+    color: #EC6868;
+}
+

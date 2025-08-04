@@ -1,4 +1,4 @@
-async function useEyedropper() { 
+async function useEyedropper(eyedropper) { 
     try {
         color = await eyedropper.open();
         console.log(color.sRGBHex);
@@ -24,12 +24,34 @@ function copyColor() {
     if (copied !== 'No color selected.') {
         navigator.clipboard.writeText(copied);
     }
-    showToast(copied);
+    const copiedText = copied === 'No color selected.' ? copied : 'Copied to clipboard!';
+    showToast(copiedText);
 }
 
-function showToast(copied) {
+function createNewPalette() {
+    const newPalette = document.createElement('div');
+    newPalette.className = 'palette';
+    newPalette.innerHTML = `<div class="info-row">
+                    <div class="left">
+                        <span class="palette-name">New Palette</span>
+                    </div>
+                    <div class="right">
+                        <button class="palette-btn plus-btn"><img class="pal-img plus-img" src="icons/plus-lg.svg"></button>
+                        <button class="palette-btn edit-btn"><img class="pal-img edit-img" src="icons/pencil-square.svg"></button>
+                        <button class="palette-btn trash-btn"><img class="pal-img trash-img" src="icons/trash.svg"></button>
+                    </div>
+                </div>
+                <div class="color-container">
+                    <div class="color" data-color="red"></div>
+                    <div class="color" data-color="red"></div>                    
+                </div>`;
+    
+    paletteContainer.appendChild(newPalette);
+}
+
+function showToast(text) {
     const toast = document.querySelector('.toast');
-    toast.textContent = copied === 'No color selected.' ? copied : 'Copied to clipboard!';
+    toast.textContent = text;
     toast.classList.add('show');
     setTimeout(() => {
         toast.classList.remove('show');
@@ -39,23 +61,30 @@ function showToast(copied) {
     }, 2000);
 }
 
-const eyedropper = new EyeDropper();
 const pickButton = document.querySelector('.eyedrop');
 const background = document.querySelector('.color-background');
 const text = document.querySelector('.color-text');
 const copyButton = document.querySelector('.copy');
 const indicator = document.querySelector('.copied-indicator');
+const paletteContainer = document.querySelector('.palettes');
+const paletteBtn = document.querySelector('.create-palette-button');
 let color;
 
 if (window.EyeDropper == undefined) {
     console.error('EyeDropper API is not supported on this platform.');
 } else {
+    const eyedropper = new EyeDropper();
+
     pickButton.addEventListener('click', () => {
-        useEyedropper();
+        useEyedropper(eyedropper);
     })
 
     copyButton.addEventListener('click', () => {
         copyColor();
     });
+
+    paletteBtn.addEventListener('click', () => {
+        createNewPalette();
+    })
 }
 
