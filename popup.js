@@ -1,21 +1,9 @@
-if (window.EyeDropper == undefined) {
-    console.error('EyeDropper API is not supported on this platform.');
-} else {
-
-const eyedropper = new EyeDropper();
-const pickButton = document.querySelector('.pick-button');
-const background = document.querySelector('.color-background');
-const text = document.querySelector('.color-text');
-const copyButton = document.querySelector('.copy-button');
-const indicator = document.querySelector('.copied-indicator');
-let color;
-
-
 async function useEyedropper() { 
     try {
         color = await eyedropper.open();
         console.log(color.sRGBHex);
         displayColor(color.sRGBHex);
+        
     } catch (err) {
         const abortError = "AbortError: Failed to execute 'open' on 'EyeDropper': The user canceled the selection.";
         if (err == abortError) {
@@ -32,20 +20,42 @@ function displayColor(hex) {
 }
 
 function copyColor() {
-    const copied = color ? color.sRGBHex : 'No color copied.';
-    navigator.clipboard.writeText(copied);
-    displayCopyText();
+    const copied = color ? color.sRGBHex : 'No color selected.';
+    if (copied !== 'No color selected.') {
+        navigator.clipboard.writeText(copied);
+    }
+    showToast(copied);
 }
 
-function displayCopyText() {
-    indicator.textContent = 'Copied to clipboard!'
-    indicator.classList.add('copied');
+function showToast(copied) {
+    const toast = document.querySelector('.toast');
+    toast.textContent = copied === 'No color selected.' ? copied : 'Copied to clipboard!';
+    toast.classList.add('show');
+    setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => {
+            toast.textContent = '';
+        }, 500)
+    }, 2000);
 }
 
-pickButton.addEventListener('click', () => {
-    useEyedropper();
-})
+const eyedropper = new EyeDropper();
+const pickButton = document.querySelector('.eyedrop');
+const background = document.querySelector('.color-background');
+const text = document.querySelector('.color-text');
+const copyButton = document.querySelector('.copy');
+const indicator = document.querySelector('.copied-indicator');
+let color;
 
-copyButton.addEventListener('click', copyColor);
+if (window.EyeDropper == undefined) {
+    console.error('EyeDropper API is not supported on this platform.');
+} else {
+    pickButton.addEventListener('click', () => {
+        useEyedropper();
+    })
 
+    copyButton.addEventListener('click', () => {
+        copyColor();
+    });
 }
+

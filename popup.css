@@ -30,6 +30,33 @@ body {
     background-color: #42599d;
 }
 
+.button-row {
+    display: flex;
+    gap: 5px;
+}
+
+.top-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background-color: #ffffff;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.top-button:hover {
+    background-color: #f3f3f3;
+}
+
+.top-img {
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    padding: 0;
+}
+
 .color-background {
     border: 1px solid black;
     height: 100px;
@@ -37,7 +64,7 @@ body {
     margin: 10px 0;
 }
 
-.copy-button {
+/* .copy-button {
     font-size: 0.7rem;
     margin-top: 5px;
     width: 50px;
@@ -50,10 +77,33 @@ body {
 
 .copy-button:hover {
     background-color: #f3f3f3;
+} */
+
+.create-palette-button {
+    margin: 20px 0;
+    border: 1px solid black;
+    border-radius: 3px;
+    background-color: white;
+    font-size: 0.7rem;
 }
 
-.copied-indicator {
-    color: #04aa6d;
-    margin-top: 5px;
-    font-size: 0.6rem;
+.create-palette-button:hover {
+    background-color: #f3f3f3;
+}
+
+
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #323232;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 4px;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.toast.show {
+  opacity: 1;
 }

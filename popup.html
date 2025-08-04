@@ -8,16 +8,21 @@
 </head>
 <body>
     <div class="container">
-        <button class="pick-button">Pick Color</button>
+        <div class="button-row">
+            <button class="eyedrop top-button"><img class="top-img" src="icons/eyedropper.svg"></button>
+            <button class="copy top-button"><img class="top-img" src="icons/copy.svg"></button>
+        </div>
+        
         <div class="results">
             <div class="color-background"></div>
             <div class="color-text">No color selected</div>
-            <button class="copy-button">Copy</button>
-            <div class="copied-indicator"></div>
+
+            <button class="create-palette-button">Create Palette</button>
         </div>
     </div>
-    
 
+    <div class="toast" class="hidden"></div>
+    
     <script src="popup.js"></script>
 </body>
 </html>
