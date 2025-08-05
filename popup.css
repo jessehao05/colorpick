@@ -85,7 +85,7 @@ body {
 }
 
 .create-palette-button {
-    margin: 20px 0;
+    margin: 10px 0 20px 0;
     border: 1px solid black;
     border-radius: 3px;
     background-color: white;
@@ -195,3 +195,11 @@ input {
     font-size: 12px;
 }
 
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: #3B50B9;
+}

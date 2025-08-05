@@ -3,6 +3,7 @@ async function useEyedropper(eyedropper) {
         color = await eyedropper.open();
         console.log(color.sRGBHex);
         displayColor(color.sRGBHex);
+        updateHistory();
         
     } catch (err) {
         const abortError = "AbortError: Failed to execute 'open' on 'EyeDropper': The user canceled the selection.";
@@ -117,15 +118,19 @@ function updateSavedPalettes() {
 
 function updateHistory() {
     // get current array, add color to end, and add array back into storage
-    const history = localStorage.getItem('history');
+    let history = JSON.parse(localStorage.getItem('history'));
+    console.log('hi')
     if (history === null) {
         // if no history variable, create new array with current color as first element
+        console.log('no histiory variable')
         history = [color.sRGBHex];
     } else {
+        console.log('history variable exists')
         history.push(color.sRGBHex);
     }
 
-    localStorage.setItem('history', history);
+    localStorage.setItem('history', JSON.stringify(history));
+    console.log('success updating history')
 }
 
 function showToast(text) {
@@ -194,4 +199,3 @@ if (window.EyeDropper == undefined) {
         }
     })
 }
-
