@@ -1,6 +1,6 @@
 // loads history onto page
 
-const history = JSON.parse(localStorage.getItem('history'));
+let history = JSON.parse(localStorage.getItem('history'));
 const histContainer = document.querySelector('.hist-container');
 
 function getColorFromEvent(event) {
@@ -23,7 +23,7 @@ if (history === null || history.length == 0) {
     histContainer.innerHTML = `<h1>Nothing here yet!</h1>`
 } else {
     
-    for (let i = 0; i < history.length; i++) {
+    for (let i = history.length - 1; i >= 0; i--) {
         // create an element and take history[i] for the hex code
         const colorBox = document.createElement('div');
         colorBox.className = 'color-container';
@@ -52,9 +52,9 @@ if (history === null || history.length == 0) {
         const parent = e.target.closest('.color-container');
         parent.remove();
 
-        const newArray = history.filter(color => color !== hex);
+        history = history.filter(color => color !== hex);
 
-        localStorage.setItem('history', JSON.stringify(newArray)); // not behaving correctly at all times
+        localStorage.setItem('history', JSON.stringify(history)); 
     }));
 
     const copyBtns = document.querySelectorAll('.copy-btn');

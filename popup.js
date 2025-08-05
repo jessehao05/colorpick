@@ -79,24 +79,35 @@ function handleEdit(palette) {
     const left = palette.querySelector('.left')
     left.appendChild(nameInput);
 
+    function saveInputName() {
+        // take the value of the input and set as the new name
+        const newName = nameInput.value;
+
+        // create new span element with correct class 
+        const newNameElement = document.createElement('span');
+        newNameElement.className = 'palette-name';
+        newNameElement.textContent = newName;
+
+        // remove input form and append new span element
+        nameInput.remove();
+        left.appendChild(newNameElement);
+
+        updateSavedPalettes();
+    }
+
     nameInput.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') {
             e.preventDefault();
-
-            // take the value of the input and set as the new name
-            const newName = nameInput.value;
-
-            // create new span element with correct class 
-            const newNameElement = document.createElement('span');
-            newNameElement.className = 'palette-name';
-            newNameElement.textContent = newName;
-
-            // remove input form and append new span element
-            nameInput.remove();
-            left.appendChild(newNameElement);
+            saveInputName();
         }
     })
+
+    nameInput.addEventListener('blur', () => {
+        saveInputName();
+    })
 }
+
+
 
 function handleTrash(palette) {
     console.log('trash icon clicked');
@@ -192,7 +203,6 @@ if (window.EyeDropper == undefined) {
             updateSavedPalettes();
         } else if (e.target.closest('.edit-btn')) {
             handleEdit(pal);
-            updateSavedPalettes(); // TODO localstorage issue
         } else if (e.target.closest('.trash-btn')) {
             handleTrash(pal);
             updateSavedPalettes();
