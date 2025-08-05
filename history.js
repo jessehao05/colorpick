@@ -18,7 +18,6 @@ function rgbToHex(rgbString) {
   return "#" + [r, g, b].map((x) => x.toString(16).padStart(2, "0")).join("");
 }
 
-// check for null
 if (history === null || history.length == 0) {
     histContainer.innerHTML = `<h1>Nothing here yet!</h1>`
 } else {

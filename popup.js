@@ -107,10 +107,8 @@ function handleEdit(palette) {
     })
 }
 
-
-
 function handleTrash(palette) {
-    console.log('trash icon clicked');
+    // console.log('trash icon clicked');
     palette.remove();
 }
 
@@ -130,18 +128,18 @@ function updateSavedPalettes() {
 function updateHistory() {
     // get current array, add color to end, and add array back into storage
     let history = JSON.parse(localStorage.getItem('history'));
-    console.log('hi')
+    // console.log('hi')
     if (history === null) {
         // if no history variable, create new array with current color as first element
-        console.log('no histiory variable')
+        // console.log('no histiory variable')
         history = [color.sRGBHex];
     } else {
-        console.log('history variable exists')
+        // console.log('history variable exists')
         history.push(color.sRGBHex);
     }
 
     localStorage.setItem('history', JSON.stringify(history));
-    console.log('success updating history')
+    // console.log('success updating history')
 }
 
 function showToast(text) {
@@ -195,8 +193,8 @@ if (window.EyeDropper == undefined) {
             // accounting for clicking space of margin-bottom
             return;
         }
-        console.log(e.target);
-        console.log(pal);
+        // console.log(e.target);
+        // console.log(pal);
 
         if (e.target.closest('.plus-btn')) {
             handlePlus(pal);
