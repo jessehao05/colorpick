@@ -84,21 +84,6 @@ body {
     margin-bottom: 30px;
 }
 
-/* .copy-button {
-    font-size: 0.7rem;
-    margin-top: 5px;
-    width: 50px;
-    padding: 1px;
-    border: 1px solid #5c7cdc;
-    border-radius: 5px;
-    background-color: #ffffff;
-    color: #5c7cdc;
-}
-
-.copy-button:hover {
-    background-color: #f3f3f3;
-} */
-
 .create-palette-button {
     margin: 20px 0;
     border: 1px solid black;
@@ -125,6 +110,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     gap: 5px;
+    min-height: 40px;
 }
 
 .color {
@@ -132,7 +118,6 @@ body {
     height: 40px;
     width: 40px;
     border-radius: 2px;
-    background-color: red;
 }
 
 .info-row {
@@ -202,5 +187,11 @@ body {
 
 .trash-img {
     color: #EC6868;
+}
+
+input {
+    width: 115px;
+    height: 13px;
+    font-size: 12px;
 }
 

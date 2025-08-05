@@ -41,12 +41,91 @@ function createNewPalette() {
                         <button class="palette-btn trash-btn"><img class="pal-img trash-img" src="icons/trash.svg"></button>
                     </div>
                 </div>
-                <div class="color-container">
-                    <div class="color" data-color="red"></div>
-                    <div class="color" data-color="red"></div>                    
+                <div class="color-container">                  
                 </div>`;
     
     paletteContainer.appendChild(newPalette);
+}
+
+function handlePlus(palette) {
+    if (!color) {
+        showToast('No color selected');
+        return;
+    }
+
+    const colorContainer = palette.querySelector('.color-container');
+    const newColor = document.createElement('div');
+    newColor.className = 'color';
+    newColor.style.backgroundColor = color.sRGBHex;
+
+    colorContainer.appendChild(newColor);
+}
+
+function handleEdit(palette) {
+    // get the current name value
+    const nameElement = palette.querySelector('.palette-name');
+    const curName = nameElement.textContent;
+
+    // delete it to make space for input element
+    nameElement.remove();
+
+    // make new input element, set pre-filled text to current name
+    const nameInput = document.createElement('input');
+    nameInput.type = 'text';
+    nameInput.value = curName;
+
+    // append to the left div
+    const left = palette.querySelector('.left')
+    left.appendChild(nameInput);
+
+    nameInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+
+            // take the value of the input and set as the new name
+            const newName = nameInput.value;
+
+            // create new span element with correct class 
+            const newNameElement = document.createElement('span');
+            newNameElement.className = 'palette-name';
+            newNameElement.textContent = newName;
+
+            // remove input form and append new span element
+            nameInput.remove();
+            left.appendChild(newNameElement);
+        }
+    })
+}
+
+function handleTrash(palette) {
+    console.log('trash icon clicked');
+    palette.remove();
+}
+
+function loadPalettes() {
+    const paletteData = localStorage.getItem('palette-data');
+    if (paletteData !== null) {
+        paletteContainer.innerHTML = paletteData;
+    }
+}
+
+function updateSavedPalettes() {
+    // any time a palette is created, renamed, deleted, or has a color added, save innerHTML of "palettes" to localStorage
+    const currentPalettesHTML = document.querySelector('.palettes').innerHTML;
+    localStorage.setItem('palette-data', currentPalettesHTML);
+}
+
+function updateHistory() {
+    // get current array, add color to end, and add array back into storage
+    const history = localStorage.getItem('history');
+    if (history === null) {
+        // if no history variable, create new array with current color as first element
+        history = [color.sRGBHex];
+    } else {
+        history.push(color.sRGBHex);
+    }
+
+    localStorage.setItem('history', history);
 }
 
 function showToast(text) {
@@ -61,6 +140,8 @@ function showToast(text) {
     }, 2000);
 }
 
+// ------ END FUNCTIONS ------
+
 const pickButton = document.querySelector('.eyedrop');
 const background = document.querySelector('.color-background');
 const text = document.querySelector('.color-text');
@@ -73,8 +154,10 @@ let color;
 if (window.EyeDropper == undefined) {
     console.error('EyeDropper API is not supported on this platform.');
 } else {
+    loadPalettes();
     const eyedropper = new EyeDropper();
 
+    // permanent binding
     pickButton.addEventListener('click', () => {
         useEyedropper(eyedropper);
     })
@@ -85,6 +168,30 @@ if (window.EyeDropper == undefined) {
 
     paletteBtn.addEventListener('click', () => {
         createNewPalette();
+        updateSavedPalettes();
+    })
+
+    // event delegation for palette buttons
+    paletteContainer.addEventListener('click', (e) => {
+        const pal = e.target.closest('.palette');
+    
+        if (!pal) {
+            // accounting for clicking space of margin-bottom
+            return;
+        }
+        console.log(e.target);
+        console.log(pal);
+
+        if (e.target.closest('.plus-btn')) {
+            handlePlus(pal);
+            updateSavedPalettes();
+        } else if (e.target.closest('.edit-btn')) {
+            handleEdit(pal);
+            updateSavedPalettes(); // TODO localstorage issue
+        } else if (e.target.closest('.trash-btn')) {
+            handleTrash(pal);
+            updateSavedPalettes();
+        }
     })
 }
 
