@@ -15,11 +15,11 @@ body {
 
 a {
     text-decoration: none;
-    color: black;
+    color: #0065a9;
 }
 
 a:hover {
-    color: #3B50B9;
+    color: #31439a;
 }
 
 .container {

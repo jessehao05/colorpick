@@ -9,6 +9,10 @@ body {
     padding: 20px;
 }
 
+.links-row {
+    margin-bottom: 30px;
+}
+
 .toast {
   position: fixed;
   bottom: 20px;
@@ -86,14 +90,17 @@ body {
 
 .create-palette-button {
     margin: 10px 0 20px 0;
-    border: 1px solid black;
-    border-radius: 3px;
-    background-color: white;
+    padding: 5px;
+    border: 1px solid #6d007f;
+    border-radius: 7px;
+    background-color: #ffffff;
     font-size: 0.7rem;
+    color: #6d007f
 }
 
 .create-palette-button:hover {
-    background-color: #f3f3f3;
+    background-color: #6d007f;
+    color: #f3f3f3;
 }
 
 .palette {
@@ -197,9 +204,9 @@ input {
 
 a {
     text-decoration: none;
-    color: black;
+    color: #0065a9;
 }
 
 a:hover {
-    color: #3B50B9;
+    color: #31439a;
 }

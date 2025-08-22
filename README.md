@@ -16,4 +16,8 @@ Chrome Extension that aims to help developers and designers when finding colors 
 
 ## Tools Used
 
-HTML, CSS, JavaScript, EyeDropper API
+HTML, CSS, JavaScript, EyeDropper API, Bootstrap Icons
+
+## Design
+
+[Figma](https://www.figma.com/design/HdEJOj95lB3Sd9QwLlwmPn/color-palette?node-id=0-1&t=AzAnEXZjsIkq0efJ-1)
