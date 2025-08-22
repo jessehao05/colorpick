@@ -166,6 +166,7 @@ const paletteBtn = document.querySelector('.create-palette-button');
 let color;
 
 if (window.EyeDropper == undefined) {
+    alert('EyeDropper API is not supported on this platform.')
     console.error('EyeDropper API is not supported on this platform.');
 } else {
     loadPalettes();
