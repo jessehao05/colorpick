@@ -125,6 +125,22 @@ body {
     height: 40px;
     width: 40px;
     border-radius: 2px;
+    display: flex;
+}
+
+.color button {
+    width: 3px;
+    height: 3px;
+    padding: 0;
+    border: none;
+    background-color: #ffffff;
+}
+
+.pal-color-img {
+    margin: 0;
+    padding: 0;
+    width: 3px;
+    height: 3px;
 }
 
 .info-row {

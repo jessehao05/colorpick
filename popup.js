@@ -58,6 +58,7 @@ function handlePlus(palette) {
     const newColor = document.createElement('div');
     newColor.className = 'color';
     newColor.style.backgroundColor = color.sRGBHex;
+    // newColor.innerHTML = '<button class="pal-color-btn"><img class="pal-color-img" src="icons/copy.svg"></button><button class="pal-color-btn"><img class="pal-color-img" src="icons/x-lg.svg"></button>'
 
     colorContainer.appendChild(newColor);
 }
