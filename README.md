@@ -13,6 +13,7 @@ Chrome Extension that aims to help developers and designers when finding colors 
 - RGB values
 - Copy palettes (or all colors of a palette) as a string/text
 - Toggle palettes on/off
+- Clear history
 
 ## Tools Used
 
